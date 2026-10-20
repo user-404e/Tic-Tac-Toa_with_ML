@@ -83,6 +83,12 @@ def ai_move():
     Q.get((tuple(board), "O", i), 0.0)
     for i in available
 ]
+    print("\n--- AI BRAIN ---")
+
+    for move, value in zip(available, q_values):
+        print(f"Square {move + 1}: Q-value = {value:.4f}")
+
+    print("----------------\n")
 
     best_value = max(q_values)
 
@@ -92,6 +98,7 @@ def ai_move():
     ]
 
     move = random.choice(best_moves)
+    print(f"AI selected square: {move + 1}")
 
     board[move] = "O"
     buttons[move].config(text="O", state="disabled")
